@@ -13,7 +13,7 @@ struct JCircle {
     float radius;
 };
 
-struct DetectionResult {
+struct PipDetectionResult {
     std::vector<JCircle> pips;
     cv::Mat contourMat;
 };
@@ -24,13 +24,14 @@ struct DetectionResult {
 - (JDSImage*) generateModifiedImage;
 
 - (cv::Mat) matToDetect;
-- (DetectionResult) detect;
+- (PipDetectionResult) detect;
 
 - (std::vector<JCircle>) findPips:(Contours) circles;
 
 @property(readonly) cv::Mat contourMat;
-@property(readonly) DetectionResult detection;
+@property(readonly) PipDetectionResult detection;
 @property cv::RNG rng;
+@property cv::Scalar color;
 @property int bwThreshold;
 @property int bwOnValue;
 @property int minRadius;
@@ -42,8 +43,8 @@ struct DetectionResult {
 }
 - (id)initWithUIImage:(JDSImage *)uiImage {
     DominoeDectorSettings* settings = [[DominoeDectorSettings alloc] init];
-    settings.minRadius = -1; // 25
-    settings.maxRadius = 140;
+    settings.minRadius = 22; // 25
+    settings.maxRadius = 70; // 70
     return [self initWithUIImage:uiImage andSettings: settings];
 }
 
@@ -55,6 +56,7 @@ struct DetectionResult {
         _minRadius = settings.minRadius;
         _maxRadius = settings.maxRadius;
         _rng = cv::RNG(23456);
+        _color = cv::Scalar(256, 0, 0);
         _detection = [self detect];
         _contourImage = [CVUtils generateUIImageForMat:_detection.contourMat];
         _modifiedImage = [self generateModifiedImage];
@@ -72,10 +74,18 @@ struct DetectionResult {
 
     for (JCircle cur : _detection.pips) {
         // cv::Scalar color = cv::Scalar(_rng.uniform(0, 256), _rng.uniform(0,256), _rng.uniform(0,256));
-        cv::Scalar color = cv::Scalar(256, 0, 0);
+        cv::Scalar color = _color;
         int rad = (int) round(cur.radius);
-        cv::circle(mat, cur.center, rad, color, -1);
+        cv::circle(mat, cur.center, rad, color, 3);
     }
+
+    cv::putText(mat,
+            std::to_string(_detection.pips.size()),
+            cv::Point2d(100, 100),
+            cv::FONT_HERSHEY_SCRIPT_SIMPLEX,
+            3,
+            _color,
+            3);
 
     return [CVUtils generateUIImageForMat:mat];
 }
@@ -94,22 +104,23 @@ struct DetectionResult {
 
     // Binary image it
     cv::threshold(mat, mat, _bwThreshold, _bwOnValue, cv::THRESH_BINARY);
-    //cv::floodFill(mat, cv::Point(0,0), cv::Scalar(255));
+    cv::floodFill(mat, cv::Point(0,0), cv::Scalar(128));
 
     cv::Mat structureElement = cv::getStructuringElement(cv::MORPH_ELLIPSE, cv::Size(5, 5));
     cv::morphologyEx(mat, mat, cv::MORPH_CLOSE, structureElement);
+    // cv::bitwise_not(mat, mat);
     
     return mat;
 }
 
-- (DetectionResult) detect {
+- (PipDetectionResult) detect {
     cv::Mat mat = [self matToDetect];
     std::vector<std::vector<cv::Point> > contours;
     std::vector<cv::Vec4i> hierarchy;
-    cv::findContours(mat, contours, hierarchy, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_NONE);
-    printf("Total circles: %ld\n", contours.size());
+    cv::findContours(mat, contours, hierarchy, cv::RETR_TREE, cv::CHAIN_APPROX_NONE);
+    printf("Total contours: %ld\n", contours.size());
 
-    DetectionResult result;
+    PipDetectionResult result;
     result.pips = [self findPips: contours];
     result.contourMat = mat;
 
