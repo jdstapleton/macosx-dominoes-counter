@@ -319,6 +319,7 @@
 					"-lopencv_imgproc",
 					"-lopencv_objdetect",
 					"-lopencv_features2d",
+					"-lopencv_photo",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "dominoe-counter-Bridging-Header.h";
@@ -341,6 +342,7 @@
 					"-lopencv_imgproc",
 					"-lopencv_objdetect",
 					"-lopencv_features2d",
+					"-lopencv_photo",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "dominoe-counter-Bridging-Header.h";

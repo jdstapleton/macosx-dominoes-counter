@@ -34,7 +34,7 @@
       </LocationScenarioReference>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "&quot;/Users/jstapleton/src/swift/testopencv/testopencv/training.bundle/heic/dominoe-training - 1.HEIC&quot;"
+            argument = "/Users/jstapleton/Downloads/IMG_4942.HEIC"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
