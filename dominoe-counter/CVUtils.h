@@ -12,7 +12,7 @@
 #include "JDSImage.h"
 
 @interface CVUtils : NSObject
-+ (cv::Mat) cvMatFromUIImage: (JDSImage *)image;
-+ (cv::Mat) cvMatGrayFromUIImage: (JDSImage *)image;
-+ (JDSImage *) generateUIImageForMat:(const cv::Mat &)mat;
++ (cv::Mat) cvMatFromCGImage: (CGImageRef)image;
++ (cv::Mat) cvMatGrayFromCGImage: (CGImageRef)image;
++ (CGImageRef) generateCGImageForMat:(const cv::Mat &)mat;
 @end

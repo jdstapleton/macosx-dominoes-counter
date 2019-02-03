@@ -9,9 +9,15 @@
 #ifndef DominoeDectorSettings_h
 #define DominoeDectorSettings_h
 
+typedef enum ImageCleanup {
+    icAUTO = 0,
+    icYES,
+    icNO
+} ImageCleanup;
+
 @interface DominoeDectorSettings : NSObject {
 }
-
+@property(nonatomic) ImageCleanup imageCleanupSetting;
 @property(nonatomic) int lowerAreaThreshold;
 @property(nonatomic) int upperAreaThreshold;
 @property(nonatomic) int bwThreshold;

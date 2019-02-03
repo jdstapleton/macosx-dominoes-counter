@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		A3ABD56052981047D29DDC1C /* NSImageCgImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3ABD7808AC1E1690A2172EA /* NSImageCgImage.m */; };
-		A3ABD678B0A69486ED67DAEA /* PipDetector.mm in Sources */ = {isa = PBXBuildFile; fileRef = A3ABDFE7690F0E640DEE4E3E /* PipDetector.mm */; };
 		A3ABD6F43BEB409DC1433505 /* CrossPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3ABDDF6C8E542991F07E11A /* CrossPlatform.swift */; };
-		A3ABDDD9965CDE9463C87CD1 /* CVUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = A3ABDEB9D346D2B7894DB09E /* CVUtils.mm */; };
-		D7352D4021FDFD6700FDEBB0 /* DominoeDectorSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = D7352D3F21FDFD6700FDEBB0 /* DominoeDectorSettings.m */; };
+		D71410A722076721005730EB /* CVUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = D71410A622076721005730EB /* CVUtils.mm */; };
+		D71410B022076770005730EB /* DominoeDectorSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = D71410A82207676F005730EB /* DominoeDectorSettings.m */; };
+		D71410B122076770005730EB /* DominoeResult.m in Sources */ = {isa = PBXBuildFile; fileRef = D71410AB2207676F005730EB /* DominoeResult.m */; };
+		D71410B222076770005730EB /* PipDetector.mm in Sources */ = {isa = PBXBuildFile; fileRef = D71410AC2207676F005730EB /* PipDetector.mm */; };
+		D71410B322076770005730EB /* PipResult.m in Sources */ = {isa = PBXBuildFile; fileRef = D71410AF22076770005730EB /* PipResult.m */; };
 		D765FB0921FCD40A00670E7C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D765FB0821FCD40A00670E7C /* main.swift */; };
-		D765FB1921FCFA3D00670E7C /* DominoeDetector.mm in Sources */ = {isa = PBXBuildFile; fileRef = D765FB1821FCFA3D00670E7C /* DominoeDetector.mm */; };
 		D765FB1C21FCFA7300670E7C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D765FB1B21FCFA7300670E7C /* Cocoa.framework */; };
 		D765FB1E21FDF90000670E7C /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D765FB1D21FDF90000670E7C /* AppKit.framework */; };
 /* End PBXBuildFile section */
@@ -33,20 +34,22 @@
 /* Begin PBXFileReference section */
 		A3ABD4802BF687778836461F /* JDSImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JDSImage.h; sourceTree = "<group>"; };
 		A3ABD7808AC1E1690A2172EA /* NSImageCgImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSImageCgImage.m; sourceTree = "<group>"; };
-		A3ABD934A5DD4C141123D567 /* PipDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PipDetector.h; sourceTree = "<group>"; };
 		A3ABDA5751D244F86CCC4F94 /* NSImageCgImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSImageCgImage.h; sourceTree = "<group>"; };
-		A3ABDB48E14ABFACC80EA10E /* CVUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVUtils.h; sourceTree = "<group>"; };
 		A3ABDDF6C8E542991F07E11A /* CrossPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrossPlatform.swift; sourceTree = "<group>"; };
-		A3ABDEB9D346D2B7894DB09E /* CVUtils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CVUtils.mm; sourceTree = "<group>"; };
-		A3ABDFE7690F0E640DEE4E3E /* PipDetector.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PipDetector.mm; sourceTree = "<group>"; };
-		D7352D3E21FDFD6700FDEBB0 /* DominoeDectorSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DominoeDectorSettings.h; path = ../../testopencv/testopencv/DominoeDectorSettings.h; sourceTree = "<group>"; };
-		D7352D3F21FDFD6700FDEBB0 /* DominoeDectorSettings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DominoeDectorSettings.m; path = ../../testopencv/testopencv/DominoeDectorSettings.m; sourceTree = "<group>"; };
+		D71410A522076721005730EB /* CVUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CVUtils.h; path = CVUtils.h; sourceTree = "<group>"; };
+		D71410A622076721005730EB /* CVUtils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CVUtils.mm; path = CVUtils.mm; sourceTree = "<group>"; };
+		D71410A82207676F005730EB /* DominoeDectorSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DominoeDectorSettings.m; sourceTree = "<group>"; };
+		D71410A92207676F005730EB /* PipResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PipResult.h; path = PipResult.h; sourceTree = "<group>"; };
+		D71410AA2207676F005730EB /* DominoeDectorSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DominoeDectorSettings.h; path = DominoeDectorSettings.h; sourceTree = "<group>"; };
+		D71410AB2207676F005730EB /* DominoeResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DominoeResult.m; sourceTree = "<group>"; };
+		D71410AC2207676F005730EB /* PipDetector.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PipDetector.mm; sourceTree = "<group>"; };
+		D71410AD2207676F005730EB /* PipDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PipDetector.h; sourceTree = "<group>"; };
+		D71410AE2207676F005730EB /* DominoeResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DominoeResult.h; sourceTree = "<group>"; };
+		D71410AF22076770005730EB /* PipResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PipResult.m; sourceTree = "<group>"; };
 		D765FB0521FCD40A00670E7C /* dominoe-counter */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "dominoe-counter"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D765FB0821FCD40A00670E7C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		D765FB1521FCF95A00670E7C /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		D765FB1621FCF99B00670E7C /* dominoe-counter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "dominoe-counter-Bridging-Header.h"; sourceTree = "<group>"; };
-		D765FB1721FCFA3D00670E7C /* DominoeDetector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DominoeDetector.h; sourceTree = "<group>"; };
-		D765FB1821FCFA3D00670E7C /* DominoeDetector.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DominoeDetector.mm; sourceTree = "<group>"; };
 		D765FB1B21FCFA7300670E7C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D765FB1D21FDF90000670E7C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -64,13 +67,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A3ABDEB502C4BB56D6288529 /* cvHelpers */ = {
+		D71410A322076536005730EB /* CVUtils */ = {
 			isa = PBXGroup;
 			children = (
-				A3ABDEB9D346D2B7894DB09E /* CVUtils.mm */,
-				A3ABDB48E14ABFACC80EA10E /* CVUtils.h */,
+				D71410A522076721005730EB /* CVUtils.h */,
+				D71410A622076721005730EB /* CVUtils.mm */,
+				A3ABD4802BF687778836461F /* JDSImage.h */,
+				A3ABD7808AC1E1690A2172EA /* NSImageCgImage.m */,
+				A3ABDA5751D244F86CCC4F94 /* NSImageCgImage.h */,
 			);
-			path = cvHelpers;
+			name = CVUtils;
+			sourceTree = "<group>";
+		};
+		D71410A422076569005730EB /* DominoDetector */ = {
+			isa = PBXGroup;
+			children = (
+				D71410AA2207676F005730EB /* DominoeDectorSettings.h */,
+				D71410A82207676F005730EB /* DominoeDectorSettings.m */,
+				D71410AE2207676F005730EB /* DominoeResult.h */,
+				D71410AB2207676F005730EB /* DominoeResult.m */,
+				D71410AD2207676F005730EB /* PipDetector.h */,
+				D71410AC2207676F005730EB /* PipDetector.mm */,
+				D71410A92207676F005730EB /* PipResult.h */,
+				D71410AF22076770005730EB /* PipResult.m */,
+			);
+			name = DominoDetector;
 			sourceTree = "<group>";
 		};
 		D765FAFC21FCD40A00670E7C = {
@@ -94,19 +115,11 @@
 		D765FB0721FCD40A00670E7C /* dominoe-counter */ = {
 			isa = PBXGroup;
 			children = (
-				D7352D3E21FDFD6700FDEBB0 /* DominoeDectorSettings.h */,
-				D7352D3F21FDFD6700FDEBB0 /* DominoeDectorSettings.m */,
+				D71410A422076569005730EB /* DominoDetector */,
 				D765FB0821FCD40A00670E7C /* main.swift */,
 				D765FB1521FCF95A00670E7C /* PrefixHeader.pch */,
-				D765FB1721FCFA3D00670E7C /* DominoeDetector.h */,
-				D765FB1821FCFA3D00670E7C /* DominoeDetector.mm */,
 				A3ABDDF6C8E542991F07E11A /* CrossPlatform.swift */,
-				A3ABD7808AC1E1690A2172EA /* NSImageCgImage.m */,
-				A3ABDA5751D244F86CCC4F94 /* NSImageCgImage.h */,
-				A3ABD4802BF687778836461F /* JDSImage.h */,
-				A3ABDFE7690F0E640DEE4E3E /* PipDetector.mm */,
-				A3ABD934A5DD4C141123D567 /* PipDetector.h */,
-				A3ABDEB502C4BB56D6288529 /* cvHelpers */,
+				D71410A322076536005730EB /* CVUtils */,
 			);
 			path = "dominoe-counter";
 			sourceTree = "<group>";
@@ -178,12 +191,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D765FB0921FCD40A00670E7C /* main.swift in Sources */,
-				D765FB1921FCFA3D00670E7C /* DominoeDetector.mm in Sources */,
-				D7352D4021FDFD6700FDEBB0 /* DominoeDectorSettings.m in Sources */,
 				A3ABD6F43BEB409DC1433505 /* CrossPlatform.swift in Sources */,
 				A3ABD56052981047D29DDC1C /* NSImageCgImage.m in Sources */,
-				A3ABD678B0A69486ED67DAEA /* PipDetector.mm in Sources */,
-				A3ABDDD9965CDE9463C87CD1 /* CVUtils.mm in Sources */,
+				D71410B222076770005730EB /* PipDetector.mm in Sources */,
+				D71410B022076770005730EB /* DominoeDectorSettings.m in Sources */,
+				D71410B122076770005730EB /* DominoeResult.m in Sources */,
+				D71410B322076770005730EB /* PipResult.m in Sources */,
+				D71410A722076721005730EB /* CVUtils.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

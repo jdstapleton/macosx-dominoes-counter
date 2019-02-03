@@ -4,7 +4,6 @@
 //
 
 #import "CVUtils.h"
-#import "NSImageCgImage.h"
 
 @implementation CVUtils {
 
@@ -13,10 +12,11 @@
 // sign-conversion cols, rows the cv and CGBitmap disagree on type, so ignore warning
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wsign-conversion"
-+ (cv::Mat)cvMatFromUIImage:(JDSImage *)image {
-    CGColorSpaceRef colorSpace = CGImageGetColorSpace(image.CGImage);
-    int cols = (int) image.size.width;   // int is what cvMat expects not float
-    int rows = (int) image.size.height;  // int is what cvMat expects not float
++ (cv::Mat)cvMatFromCGImage:(CGImageRef)image {
+    CGColorSpaceRef colorSpace = CGImageGetColorSpace(image);
+    
+    int cols = (int) CGImageGetWidth(image);   // int is what cvMat expects not float
+    int rows = (int) CGImageGetHeight(image);  // int is what cvMat expects not float
 
     cv::Mat cvMat(rows, cols, CV_8UC4); // 8 bits per component, 4 channels (color channels + alpha)
 
@@ -29,15 +29,15 @@
             kCGImageAlphaNoneSkipLast |
                     kCGBitmapByteOrderDefault); // Bitmap info flags
 
-    CGContextDrawImage(contextRef, CGRectMake(0, 0, cols, rows), image.CGImage);
+    CGContextDrawImage(contextRef, CGRectMake(0, 0, cols, rows), image);
     CGContextRelease(contextRef);
 
     return cvMat;
 }
 #pragma clang diagnostic pop
 
-+ (cv::Mat)cvMatGrayFromUIImage:(JDSImage *)image {
-    cv::Mat cvMat = [CVUtils cvMatFromUIImage:image];
++ (cv::Mat)cvMatGrayFromCGImage:(CGImageRef)image {
+    cv::Mat cvMat = [CVUtils cvMatFromCGImage:image];
 
     // to calculate circles we need to convert to greyscale
     cv::cvtColor(cvMat, cvMat, cv::COLOR_RGB2GRAY);
@@ -45,7 +45,7 @@
     return cvMat;
 }
 
-+ (JDSImage *)generateUIImageForMat:(const cv::Mat &)mat {
++ (CGImageRef)generateCGImageForMat:(const cv::Mat &)mat {
     NSData *data = [NSData dataWithBytes:mat.data length:mat.elemSize()*mat.total()];
     CGColorSpaceRef colorSpace;
 
@@ -70,15 +70,10 @@
             false,                                      //should interpolate
             kCGRenderingIntentDefault                   //intent
     );
-
-
-    // Getting UIImage from CGImage
-    JDSImage *finalImage = [JDSImage imageWithCGImage:imageRef];
-    CGImageRelease(imageRef);
     CGDataProviderRelease(provider);
     CGColorSpaceRelease(colorSpace);
 
-    return finalImage;
+    return imageRef;
 }
 
 @end

@@ -29,24 +29,24 @@ let outdir = try ensureExistAsDirectory(file: URL(fileURLWithPath: CommandLine.a
 let image = NSImage(contentsOfFile: fileName)!
 
 func methodOne() {
-    let settings = DominoeDectorSettings();
-    let i = 3;
-    let dc: DominoeDetector = DominoeDetector(uiImage: image, andSettings: settings)
+    let settings = DominoeDectorSettings()
+    settings.minRadius = 4;
+    settings.maxRadius = 18;
+    settings.lowerAreaThreshold =  3000;
+    settings.upperAreaThreshold = 10000;
 
-    _ = dc.modifiedImage.save(as: "modified_cannyLowThreshold_\(i)", fileType: .png, at: outdir)
-    _ = dc.contourImage.save(as: "contour_cannyLowThreshold_\(i)", fileType: .png, at: outdir)
+    let i = 3
+    let dc: PipDetector = PipDetector(cgImage: image.cgImage!, andSettings: settings)
+
+    let mi = NSImage(cgImage: dc.modifiedImage)
+    let ci = NSImage(cgImage: dc.contourImage)
+    _ = mi.save(as: "modified_cannyLowThreshold_\(i)", fileType: .png, at: outdir)
+    _ = ci.save(as: "contour_cannyLowThreshold_\(i)", fileType: .png, at: outdir)
     //for i: Int32 in stride(from: 0, to: 100, by: 12) {
     //    settings.cannyLowThreshold = i;
     //
     //}
 }
 
-func methodTwo() {
-    let pc = PipDetector(uiImage: image)
-
-    _ = pc.modifiedImage.save(as: "pip_modified", fileType: .png, at: outdir)
-    _ = pc.contourImage.save(as: "pip_contour", fileType: .png, at: outdir)
-}
-
-methodTwo()
+methodOne()
 exit(0)

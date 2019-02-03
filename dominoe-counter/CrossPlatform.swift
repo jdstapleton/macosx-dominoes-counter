@@ -40,6 +40,10 @@ extension NSImage {
                 context: nil,
                 hints: nil)
     }
+    
+    convenience init(cgImage: CGImage) {
+        self.init(cgImage: cgImage, size: NSSize(width: cgImage.width, height: cgImage.height))
+    }
 
     func save(as fileName: String, fileType: NSBitmapImageRep.FileType = .png, at directory: URL = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)) -> Bool {
         guard let tiffRepresentation = tiffRepresentation, directory.isDirectory, !fileName.isEmpty else { return false }

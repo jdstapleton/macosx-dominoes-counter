@@ -5,18 +5,20 @@
 
 #import "PipDetector.h"
 #import "CVUtils.h"
+#import "DominoeResult.h"
+#import "PipResult.h"
 
 typedef std::vector<std::vector<cv::Point> > Contours;
 
 struct JPip {
-    int domId;
     cv::Point2f center;
     float radius;
 };
 
-struct PipDetectionResult {
+struct LocalPipDetectionResult {
     std::vector<JPip> pips;
     std::vector<cv::RotatedRect> dominoes;
+    std::vector<DominoeResult *> results;
     cv::Mat contourMat;
 };
 
@@ -24,62 +26,65 @@ struct PipDetectionResult {
 }
 
 - (void) annotateMat: (cv::Mat&) mat;
-- (JDSImage *)generateModifiedImage;
-- (JDSImage *)generateContourImage;
+- (CGImageRef) generateModifiedImage;
+- (CGImageRef) generateContourImage;
 
 - (cv::Mat)matToDetect;
 
-- (PipDetectionResult)detect;
+- (LocalPipDetectionResult)detect;
 
-- (void)findPips:(Contours)contours withHierarchy:(std::vector<cv::Vec4i> const &)hierarchy into: (PipDetectionResult&) result;
+- (void)findPips:(Contours)contours withHierarchy:(std::vector<cv::Vec4i> const &)hierarchy into: (LocalPipDetectionResult&) result;
 - (void)findPips:(Contours const &)contours forDomid: (int) domId withHierarchy:(const std::vector<cv::Vec4i> &)hierarchy within:(const cv::Vec4i &)within into: (std::vector<JPip>&) result;
 
 @property(readonly) cv::Mat contourMat;
-@property(readonly) PipDetectionResult detection;
+@property(readonly) LocalPipDetectionResult detection;
+@property(readonly) DominoeDectorSettings* s;
 @property cv::RNG rng;
 @property cv::Scalar color;
-@property cv::Scalar whiteRangeLo;
-@property cv::Scalar whiteRangeUp;
-@property int lowerAreaThreshold;
-@property int upperAreaThreshold;
-@property int bwThreshold;
-@property int bwOnValue;
-@property int minRadius;
-@property int maxRadius;
+@property(readonly) bool shouldCleanup;
 @end
 
 @implementation PipDetector {
 
 }
-- (id)initWithUIImage:(JDSImage *)uiImage {
+- (id) initWithCgImage:(CGImageRef)cgImageRef {
     DominoeDectorSettings *settings = [[DominoeDectorSettings alloc] init];
     settings.minRadius = 22; // 25
     settings.maxRadius = 70; // 70
     settings.lowerAreaThreshold += 30000;
     settings.upperAreaThreshold += 100000;
-    return [self initWithUIImage:uiImage andSettings:settings];
+    settings.bwThreshold = 190;
+    
+    return [self initWithCgImage:cgImageRef andSettings:settings];
 }
 
-- (id)initWithUIImage:(JDSImage *)uiImage andSettings:(DominoeDectorSettings *)settings {
+- (id) initWithCgImage:(CGImageRef)cgImageRef andSettings:(DominoeDectorSettings *)settings {
     if (self = [super init]) {
-        _originalImage = uiImage;
-        _lowerAreaThreshold = settings.lowerAreaThreshold;
-        _upperAreaThreshold = settings.upperAreaThreshold;
-        _bwThreshold = 190; // settings.bwThreshold;
-        _bwOnValue = settings.bwOnValue;
-        _minRadius = settings.minRadius;
-        _maxRadius = settings.maxRadius;
+        _originalImage = CGImageRetain(cgImageRef);
         _rng = cv::RNG(23456);
         _color = cv::Scalar(256, 0, 0);
-        _whiteRangeLo = cv::Scalar(240, 240, 240);
-        _whiteRangeUp = cv::Scalar(255, 255, 255);
+        _s = settings;
         _detection = [self detect];
         _contourImage = [self generateContourImage];
         _modifiedImage = [self generateModifiedImage];
-        _circleCount = _detection.pips.size();
+        _dominoes = [NSArray arrayWithObjects:&_detection.results[0] count:_detection.results.size()];
     }
 
     return self;
+}
+
+- (void) dealloc {
+    if (_originalImage) {
+        CGImageRelease(_originalImage);
+    }
+    
+    if (_contourImage) {
+        CGImageRelease(_contourImage);
+    }
+    
+    if (_modifiedImage) {
+        CGImageRelease(_modifiedImage);
+    }
 }
 
 - (void) annotateMat: (cv::Mat&) mat {
@@ -117,61 +122,61 @@ struct PipDetectionResult {
             3);
 }
 
-- (JDSImage *)generateModifiedImage {
-    cv::Mat mat = [CVUtils cvMatGrayFromUIImage:_originalImage];
+- (CGImageRef) generateModifiedImage {
+    cv::Mat mat = [CVUtils cvMatGrayFromCGImage:_originalImage];
     [self annotateMat:mat];
 
-    return [CVUtils generateUIImageForMat:mat];
+    return [CVUtils generateCGImageForMat:mat];
 }
 
-- (JDSImage *)generateContourImage {
+- (CGImageRef) generateContourImage {
     cv::Mat mat = _detection.contourMat.clone();
     [self annotateMat:mat];
 
-    return [CVUtils generateUIImageForMat:mat];
+    return [CVUtils generateCGImageForMat:mat];
 }
 
 - (cv::Mat)matToDetect {
-    cv::Mat mat = [CVUtils cvMatGrayFromUIImage:_originalImage];
+    cv::Mat mat = [CVUtils cvMatGrayFromCGImage:_originalImage];
 
     // Store the found contour points here
     Contours contours;
     std::vector<cv::Vec4i> hierarchy;
+    bool doCleanup = self.shouldCleanup;
 
-    cv::GaussianBlur(mat, mat, cv::Size(9, 9), 1, 1);
-
-    // gradient: Get a more resistant to noise operator that joints Gaussian smoothing plus differentiation operation
-    //cv::Sobel(mat, mat, CV_8U, 1, 0, 3);  // gradient:
+    if (doCleanup) {
+        cv::GaussianBlur(mat, mat, cv::Size(3, 3), 1, 1);
+        // gradient: Get a more resistant to noise operator that joints Gaussian smoothing plus differentiation operation
+        //cv::Sobel(mat, mat, CV_8U, 1, 0, 3);  // gradient:
+    }
 
     // Binary image it
-    cv::threshold(mat, mat, _bwThreshold, _bwOnValue, cv::THRESH_BINARY);
+    cv::threshold(mat, mat, _s.bwThreshold, _s.bwOnValue, cv::THRESH_BINARY);
     // cv::floodFill(mat, cv::Point(0,0), cv::Scalar(128));
 
-    cv::Mat structureElement = cv::getStructuringElement(cv::MORPH_ELLIPSE, cv::Size(5, 5));
-    cv::morphologyEx(mat, mat, cv::MORPH_CLOSE, structureElement);
+    if (doCleanup) {
+      cv::Mat structureElement = cv::getStructuringElement(cv::MORPH_ELLIPSE, cv::Size(5, 5));
+      cv::morphologyEx(mat, mat, cv::MORPH_CLOSE, structureElement);
+    }
     // cv::bitwise_not(mat, mat);
 
     return mat;
 }
 
-- (PipDetectionResult)detect {
+- (LocalPipDetectionResult)detect {
     cv::Mat mat = [self matToDetect];
     std::vector<std::vector<cv::Point> > contours;
     std::vector<cv::Vec4i> hierarchy;
     cv::findContours(mat, contours, hierarchy, cv::RETR_CCOMP, cv::CHAIN_APPROX_SIMPLE);
-    printf("Total contours: %ld\n", contours.size());
 
-    PipDetectionResult result;
+    LocalPipDetectionResult result;
     [self findPips:contours withHierarchy:(std::vector<cv::Vec4i> const &) hierarchy into: result];
     result.contourMat = mat;
-
-    printf("Pips found: %ld\n", result.pips.size());
 
     return result;
 }
 
-- (void)findPips:(Contours)contours withHierarchy:(std::vector<cv::Vec4i> const &)hierarchy into: (PipDetectionResult&) result {
-    printf("Using dominoe area of %d => %d", _lowerAreaThreshold, _upperAreaThreshold);
+- (void)findPips:(Contours)contours withHierarchy:(std::vector<cv::Vec4i> const &)hierarchy into: (LocalPipDetectionResult &) result {
     int domId = 0;
     for (int i = 0; i < hierarchy.size(); i++) {
         // {next, prev, first_child, parent}
@@ -184,17 +189,44 @@ struct PipDetectionResult {
         std::vector<cv::Point> cur = contours[i];
         double domContourArea = cv::contourArea(cur);
 
-        if ((domContourArea > (_lowerAreaThreshold / 2)) && (domContourArea < (_upperAreaThreshold * 2))) {
+        if ((domContourArea > (_s.lowerAreaThreshold / 2)) && (domContourArea < (_s.upperAreaThreshold * 2))) {
             cv::RotatedRect mar = cv::minAreaRect(cur);
-            result.dominoes.push_back(mar);
+            printf("DOM: Not adding {%f, %f} area %f\n", mar.center.x, mar.center.y, domContourArea);
+            // result.dominoes.push_back(mar);
         }
-        if (domContourArea < _lowerAreaThreshold || domContourArea > _upperAreaThreshold) {
+        if (domContourArea < _s.lowerAreaThreshold || domContourArea > _s.upperAreaThreshold) {
             // either too big of an area to consider, or too small of an area to consider
-            //printf("Primary contour(%d) is out of range %lf\n", i, domContourArea);
+            printf("DOM: Primary contour(%d) is out of range %lf\n", i, domContourArea);
             continue;
         }
-        printf("Looking for pips of dominoe %d (%d) with area %lf\n", domId, i, domContourArea);
-        [self findPips:contours forDomid: domId withHierarchy:hierarchy within:hierarchyMeta into: result.pips];
+
+        cv::RotatedRect mar = cv::minAreaRect(cur);
+        result.dominoes.push_back(mar);
+
+        std::vector<JPip> pips;
+        [self findPips:contours forDomid: domId withHierarchy:hierarchy within:hierarchyMeta into: pips];
+
+        NSMutableArray<PipResult*> * ar = [[NSMutableArray alloc] initWithCapacity:pips.size()];
+        for (JPip const & p : pips) {
+            [ar addObject: [PipResult 
+                    resultWithCenterX:(NSInteger)p.center.x 
+                              centerY:(NSInteger)p.center.y 
+                               radius:(NSInteger) p.radius]];
+        }
+
+        cv::Rect b = mar.boundingRect();
+        DominoeResult * dr = [DominoeResult
+                resultWithPips:ar
+                x:b.x
+                y:b.y
+                width:(NSInteger) mar.size.width
+                        height:(NSInteger) mar.size.height
+                       centerX:(NSInteger) mar.center.x
+                       centerY:(NSInteger) mar.center.y
+                         angle:mar.angle];
+
+        result.results.push_back(dr);
+        result.pips.insert(std::end(result.pips), std::begin(pips), std::end(pips));
         domId++;
     }
 }
@@ -208,13 +240,26 @@ struct PipDetectionResult {
         cv::Point2f center;
         float radius;
         cv::minEnclosingCircle(cur, center, radius);
-        if ((_minRadius == -1 or radius >= _minRadius) and (_maxRadius == -1 || radius <= _maxRadius)) {
-            printf("\t(%d) Pip %d of radius %lf\n", domId, currentChild, radius);
-            results.push_back({domId, center, radius});
+        if ((_s.minRadius == -1 or radius >= _s.minRadius) and (_s.maxRadius == -1 || radius <= _s.maxRadius)) {
+            results.push_back({center, radius});
+        } else {
+            printf("PIP: Not adding pip with center (%f, %f) radius %f\n", center.x, center.y, radius);
         }
 
         currentChild = childMeta[0];
     }
+}
+
+- (bool) shouldCleanup {
+    if (_s.imageCleanupSetting == icAUTO) {
+        size_t cols = CGImageGetWidth(_originalImage);
+        size_t rows = CGImageGetHeight(_originalImage);
+
+        // auto clean up if resolution is >= 6MP
+        return cols * rows >= 6000000;
+    }
+
+    return _s.imageCleanupSetting == icYES;
 }
 
 
