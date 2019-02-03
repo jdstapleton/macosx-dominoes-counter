@@ -38,6 +38,8 @@ struct PipDetectionResult {
 @property(readonly) PipDetectionResult detection;
 @property cv::RNG rng;
 @property cv::Scalar color;
+@property cv::Scalar whiteRangeLo;
+@property cv::Scalar whiteRangeUp;
 @property int lowerAreaThreshold;
 @property int upperAreaThreshold;
 @property int bwThreshold;
@@ -69,6 +71,8 @@ struct PipDetectionResult {
         _maxRadius = settings.maxRadius;
         _rng = cv::RNG(23456);
         _color = cv::Scalar(256, 0, 0);
+        _whiteRangeLo = cv::Scalar(240, 240, 240);
+        _whiteRangeUp = cv::Scalar(255, 255, 255);
         _detection = [self detect];
         _contourImage = [self generateContourImage];
         _modifiedImage = [self generateModifiedImage];

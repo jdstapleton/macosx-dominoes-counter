@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5ca6a2d-3e36-4d2c-8725-d4d1738043ff" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/dominoe-counter.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/dominoe-counter.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dominoe-counter.xcodeproj/xcuserdata/jstapleton.xcuserdatad/xcschemes/dominoe-counter.xcscheme" beforeDir="false" afterPath="$PROJECT_DIR$/dominoe-counter.xcodeproj/xcuserdata/jstapleton.xcuserdatad/xcschemes/dominoe-counter.xcscheme" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dominoe-counter.xcodeproj/xcuserdata/jstapleton.xcuserdatad/xcschemes/xcschememanagement.plist" beforeDir="false" afterPath="$PROJECT_DIR$/dominoe-counter.xcodeproj/xcuserdata/jstapleton.xcuserdatad/xcschemes/xcschememanagement.plist" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dominoe-counter/PipDetector.mm" beforeDir="false" afterPath="$PROJECT_DIR$/dominoe-counter/PipDetector.mm" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,11 +15,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="macos_x86_64" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dominoe-counter/PipDetector.mm">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="339">
-              <caret line="82" column="47" lean-forward="true" selection-start-line="82" selection-start-column="47" selection-end-line="82" selection-end-column="47" />
+            <state relative-caret-position="403">
+              <caret line="58" column="42" lean-forward="true" selection-start-line="58" selection-start-column="42" selection-end-line="58" selection-end-column="42" />
               <folding>
                 <element signature="e#112#135#0" expanded="true" />
               </folding>
@@ -27,30 +27,22 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/dominoe-counter/cvHelpers/CVUtils.mm">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file:///usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/hal/interface.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="47" column="14" selection-start-line="47" selection-start-column="14" selection-end-line="47" selection-end-column="14" />
-              <folding>
-                <element signature="e#112#131#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="1080">
+              <caret line="72" column="8" selection-start-line="72" selection-start-column="8" selection-end-line="72" selection-end-column="8" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file:///usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/types.hpp">
+        <entry file="file:///usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/cvdef.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="502" column="17" selection-start-line="502" selection-start-column="17" selection-end-line="502" selection-end-column="17" />
+            <state relative-caret-position="4230">
+              <caret line="282" column="8" selection-start-line="282" selection-start-column="8" selection-end-line="282" selection-end-column="8" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Downloads/results/pip_modified.png">
-          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -68,26 +60,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dominoe-counter/DominoeDetector.mm">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="708">
+            <state relative-caret-position="3555">
               <caret line="237" selection-start-line="237" selection-end-line="247" selection-end-column="66" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dominoe-counter/DominoeDectorSettings.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file:///usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/imgproc.hpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="3790" column="16" lean-forward="true" selection-start-line="3790" selection-start-column="16" selection-end-line="3790" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -95,8 +69,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../testopencv/testopencv/DominoeDectorSettings.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+            <state relative-caret-position="405">
+              <caret line="27" column="4" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="4" />
               <folding>
                 <element signature="e#157#190#0" expanded="true" />
               </folding>
@@ -127,6 +101,8 @@
       <find>find</find>
       <find>findPips</find>
       <find>JCircle</find>
+      <find>alpha</find>
+      <find>flood</find>
     </findStrings>
     <replaceStrings>
       <replace>JPip</replace>
@@ -160,10 +136,9 @@
     </option>
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1075" />
+  <component name="ProjectFrameBounds">
     <option name="y" value="23" />
-    <option name="width" value="845" />
+    <option name="width" value="1920" />
     <option name="height" value="1177" />
   </component>
   <component name="ProjectView">
@@ -241,8 +216,17 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.dominoe-counter - from app">
     <configuration default="true" type="AppleRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="dominoe-counter" TARGET_NAME="dominoe-counter" CONFIG_NAME="Debug" IS_LOCATION_SIMULATION_ALLOWED="true" LOCATION_SCENARIO_ID="com.apple.dt.IDEFoundation.CurrentLocationScenarioIdentifier" LOCATION_SCENARIO_TYPE="1" RUN_TARGET_PROJECT_NAME="dominoe-counter" RUN_TARGET_NAME="dominoe-counter" MAKE_ACTIVE="TRUE" SHOULD_DEBUG_EXTENSIONS="false">
+      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
+        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
+      </EXTENSION>
+      <embedded_app_extension_list />
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="dominoe-counter - from app" type="AppleRunConfiguration" factoryName="Application" PROGRAM_PARAMS="$USER_HOME$/Downloads/IMG_761B8F6C1507-1.jpeg $USER_HOME$/Downloads/results" PASS_PARENT_ENVS_2="true" PROJECT_NAME="dominoe-counter" TARGET_NAME="dominoe-counter" CONFIG_NAME="Debug" SCHEME_NAME="dominoe-counter - from app" IS_LOCATION_SIMULATION_ALLOWED="true" LOCATION_SCENARIO_ID="com.apple.dt.IDEFoundation.CurrentLocationScenarioIdentifier" LOCATION_SCENARIO_TYPE="1" RUN_TARGET_PROJECT_NAME="dominoe-counter" RUN_TARGET_NAME="dominoe-counter" MAKE_ACTIVE="TRUE" SHOULD_DEBUG_EXTENSIONS="false">
       <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
         <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
       </EXTENSION>
@@ -260,6 +244,10 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.dominoe-counter" />
+      <item itemvalue="Application.dominoe-counter - from app" />
+    </list>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -269,7 +257,8 @@
       <option name="presentableId" value="Default" />
       <updated>1548533537058</updated>
       <workItem from="1548533539615" duration="125000" />
-      <workItem from="1548599948698" duration="32751000" />
+      <workItem from="1548599948698" duration="42940000" />
+      <workItem from="1549216586501" duration="243000" />
     </task>
     <task id="LOCAL-00001" summary="Checkpoint&#10;&#10;Black and white, dominoes look clear to me.">
       <created>1548624136778</created>
@@ -292,16 +281,23 @@
       <option name="project" value="LOCAL" />
       <updated>1548632036506</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="With dominoe detection to try to filter out the noise (failed, as it won't see one of the dominoes because its join in with the noise)">
+      <created>1548637293418</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1548637293418</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32876000" />
+    <option name="totallyTimeSpent" value="43308000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1177" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.36261982" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.36634716" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -332,7 +328,8 @@
     <MESSAGE value="Checkpoint" />
     <MESSAGE value="Checkpoint&#10;&#10;Black and white, dominoes look clear to me." />
     <MESSAGE value="207 count" />
-    <option name="LAST_COMMIT_MESSAGE" value="207 count" />
+    <MESSAGE value="With dominoe detection to try to filter out the noise (failed, as it won't see one of the dominoes because its join in with the noise)" />
+    <option name="LAST_COMMIT_MESSAGE" value="With dominoe detection to try to filter out the noise (failed, as it won't see one of the dominoes because its join in with the noise)" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -360,12 +357,8 @@
     <entry file="file:///usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/opencv.hpp">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/dominoe-counter/CrossPlatform.m">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dominoe-counter/CrossPlatform.h">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/dominoe-counter/CrossPlatform.m" />
+    <entry file="file://$PROJECT_DIR$/dominoe-counter/CrossPlatform.h" />
     <entry file="file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CGGeometry.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="327">
@@ -426,9 +419,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dominoe-counter/cvHelpers/CVUtils.c">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/dominoe-counter/cvHelpers/CVUtils.c" />
     <entry file="file://$PROJECT_DIR$/dominoe-counter/PrefixHeader.pch">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -454,13 +445,6 @@
             <element signature="e#190#218#0" expanded="true" />
             <element signature="e#112#145#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/hal/interface.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="945">
-          <caret line="72" column="8" selection-start-line="72" selection-start-column="8" selection-end-line="72" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -526,13 +510,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/mat.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="157" column="17" selection-start-line="157" selection-start-column="17" selection-end-line="157" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dominoe-counter-Bridging-Header.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -570,13 +547,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/imgproc.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="3790" column="16" lean-forward="true" selection-start-line="3790" selection-start-column="16" selection-end-line="3790" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/vector">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="239">
@@ -591,6 +561,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/dominoe-counter/cvHelpers/CVUtils.mm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="42" selection-end-column="51" />
+          <folding>
+            <element signature="e#112#131#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/types.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="502" column="17" selection-start-line="502" selection-start-column="17" selection-end-line="502" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/dominoe-counter/DominoeDectorSettings.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -598,13 +585,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../testopencv/testopencv/DominoeDectorSettings.m">
+    <entry file="file:///usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/mat.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
-          <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+          <caret line="801" column="39" selection-start-line="801" selection-start-column="32" selection-end-line="801" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/imgproc.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="515">
+          <caret line="4429" column="18" selection-start-line="4429" selection-start-column="18" selection-end-line="4429" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/results/pip_contour.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/results/pip_modified.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dominoe-counter/PipDetector.mm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="58" column="42" lean-forward="true" selection-start-line="58" selection-start-column="42" selection-end-line="58" selection-end-column="42" />
           <folding>
-            <element signature="e#157#190#0" expanded="true" />
+            <element signature="e#112#135#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/hal/interface.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1080">
+          <caret line="72" column="8" selection-start-line="72" selection-start-column="8" selection-end-line="72" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/cvdef.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4230">
+          <caret line="282" column="8" selection-start-line="282" selection-start-column="8" selection-end-line="282" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -618,42 +639,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/types.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="502" column="17" selection-start-line="502" selection-start-column="17" selection-end-line="502" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dominoe-counter/DominoeDetector.mm">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="708">
+        <state relative-caret-position="3555">
           <caret line="237" selection-start-line="237" selection-end-line="247" selection-end-column="66" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Downloads/results/pip_modified.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dominoe-counter/PipDetector.mm">
+    <entry file="file://$PROJECT_DIR$/../testopencv/testopencv/DominoeDectorSettings.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="82" column="47" lean-forward="true" selection-start-line="82" selection-start-column="47" selection-end-line="82" selection-end-column="47" />
+        <state relative-caret-position="405">
+          <caret line="27" column="4" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="4" />
           <folding>
-            <element signature="e#112#135#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Downloads/results/pip_contour.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dominoe-counter/cvHelpers/CVUtils.mm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="47" column="14" selection-start-line="47" selection-start-column="14" selection-end-line="47" selection-end-column="14" />
-          <folding>
-            <element signature="e#112#131#0" expanded="true" />
+            <element signature="e#157#190#0" expanded="true" />
           </folding>
         </state>
       </provider>
